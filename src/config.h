@@ -14,15 +14,15 @@ namespace Config
   constexpr int lineEndPosX = screenWidth / 2;
   constexpr int lineEndPosY = screenHeight;
 
-  constexpr int ballRadius = 20;
-
   constexpr int ballCenterX = screenWidth / 2;
   constexpr int ballCenterY = screenHeight / 2;
+  constexpr int ballRadius = 20;
+  constexpr int ballSpeedX = 7;
+  constexpr int ballSpeedY = 7;
 
   constexpr int paddleWidth = 25;
   constexpr int paddleHeight = 120;
-
-  constexpr int paddlePosY = screenHeight / 2 - paddleHeight / 2;
   constexpr int paddleLeftPosX = 10;
   constexpr int paddleRightPosX = screenWidth - paddleWidth - paddleLeftPosX;
+  constexpr int paddlePosY = screenHeight / 2 - paddleHeight / 2;
 }
