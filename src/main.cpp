@@ -1,19 +1,21 @@
 #include <raylib.h>
+#include "config.h"
 
 int main()
 {
-    const Color darkBlue = {0, 0, 20, 255};
+    InitWindow(Config::screenWidth, Config::screenHeight, "Pong Game");
+    SetTargetFPS(Config::FPS);
 
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 600;
-
-    InitWindow(screenWidth, screenHeight, "Pong Game");
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
+    while (WindowShouldClose() == false)
     {
         BeginDrawing();
-        ClearBackground(darkBlue);
+        ClearBackground(Config::darkBlue);
+
+        DrawLine(Config::lineStartPosX, Config::lineStartPosY, Config::lineEndPosX, Config::lineEndPosY, WHITE);
+        DrawCircle(Config::ballCenterX, Config::ballCenterY, Config::ballRadius, WHITE);
+        DrawRectangle(Config::paddleLeftPosX, Config::paddlePosY, Config::paddleWidth, Config::paddleHeight, WHITE);
+        DrawRectangle(Config::paddleRightPosX, Config::paddlePosY, Config::paddleWidth, Config::paddleHeight, WHITE);
+
         EndDrawing();
     }
 
