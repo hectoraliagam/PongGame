@@ -2,8 +2,8 @@
 
 namespace Config
 {
-  constexpr int screenWidth = 800;
-  constexpr int screenHeight = 600;
+  constexpr int screenWidth = 1200/3*2;
+  constexpr int screenHeight = 800/3*2;
 
   constexpr int FPS = 60;
 
@@ -25,4 +25,5 @@ namespace Config
   constexpr int paddleLeftPosX = 10;
   constexpr int paddleRightPosX = screenWidth - paddleWidth - paddleLeftPosX;
   constexpr int paddlePosY = screenHeight / 2 - paddleHeight / 2;
+  constexpr int paddleSpeed = 6;
 }
