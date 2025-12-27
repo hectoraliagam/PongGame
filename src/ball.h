@@ -4,6 +4,7 @@ class Ball
 {
 public:
   Ball();
+  float GetCenterY() const;
   void Update();
   void Draw() const;
 
