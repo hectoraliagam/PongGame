@@ -1,37 +1,46 @@
-#include "raylib.h"
-#include "config.h"
-#include "ball.h"
+#include "Ball.hpp"
+#include "Colors.hpp"
 
-Ball::Ball()
-    : x(Config::ballCenterX),
-      y(Config::ballCenterY),
-      radius(Config::ballRadius),
-      speedX(Config::ballSpeedX),
-      speedY(Config::ballSpeedY)
+Ball::Ball(float x, float y, int r, int speedX, int speedY)
+    : position{x, y}, speed{(float)speedX, (float)speedY}, radius(r)
 {
-}
-
-float Ball::GetCenterY() const
-{
-  return y + radius;
 }
 
 void Ball::Update()
 {
-  x += speedX;
-  y += speedY;
+  position.x += speed.x;
+  position.y += speed.y;
 
-  if (x + radius >= GetScreenWidth() || x - radius <= 0)
-  {
-    speedX *= -1;
-  }
-  if (y + radius >= GetScreenHeight() || y - radius <= 0)
-  {
-    speedY *= -1;
-  }
+  if (position.y + radius >= GetScreenHeight() || position.y - radius <= 0)
+    speed.y *= -1;
 }
 
 void Ball::Draw() const
 {
-  DrawCircle(x, y, radius, WHITE);
+  DrawCircleV(position, radius, Colors::Gray);
+}
+
+void Ball::Reset()
+{
+  position = {
+      GetScreenWidth() / 2.0f,
+      GetScreenHeight() / 2.0f};
+
+  speed.x *= (GetRandomValue(0, 1) ? 1 : -1);
+  speed.y *= (GetRandomValue(0, 1) ? 1 : -1);
+}
+
+void Ball::ReverseX()
+{
+  speed.x *= -1;
+}
+
+Vector2 Ball::GetPosition() const
+{
+  return position;
+}
+
+int Ball::GetRadius() const
+{
+  return radius;
 }
